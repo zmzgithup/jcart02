@@ -1,7 +1,12 @@
 package io.zmz.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
+import io.zmz.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.zmz.jcartadministrationback.po.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ProductMapper {
@@ -16,4 +21,8 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    void batchDelete(@Param("productIds") List<Integer> productIds);
+
+    Page<ProductListOutDTO> search();
 }
