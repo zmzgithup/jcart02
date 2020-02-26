@@ -8,8 +8,8 @@ public class OrderShowOutDTO {
     private Byte status;
     private Double totalPrice;
     private Integer rewordPoints;
-    private Long createTimetamp;
-    private Long updateTimetamp;
+    private Long createTimestamp;
+    private Long updateTimestamp;
     private Short shipMethod;
     private String shipAddress;
     private Double shipPrice;
@@ -17,7 +17,7 @@ public class OrderShowOutDTO {
     private String invoiceAddress;
     private Double invoicePrice;
     private String comment;
-    private List<OrderProductShowOutDTO> orderProduct;
+    private List<OrderProductShowOutDTO> orderProducts;
 
     public Long getOrderId() {
         return orderId;
@@ -59,20 +59,20 @@ public class OrderShowOutDTO {
         this.rewordPoints = rewordPoints;
     }
 
-    public Long getCreateTimetamp() {
-        return createTimetamp;
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setCreateTimetamp(Long createTimetamp) {
-        this.createTimetamp = createTimetamp;
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 
-    public Long getUpdateTimetamp() {
-        return updateTimetamp;
+    public Long getUpdateTimestamp() {
+        return updateTimestamp;
     }
 
-    public void setUpdateTimetamp(Long updateTimetamp) {
-        this.updateTimetamp = updateTimetamp;
+    public void setUpdateTimestamp(Long updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
     }
 
     public Short getShipMethod() {
@@ -131,11 +131,11 @@ public class OrderShowOutDTO {
         this.comment = comment;
     }
 
-    public List<OrderProductShowOutDTO> getOrderProduct() {
-        return orderProduct;
+    public List<OrderProductShowOutDTO> getOrderProducts() {
+        return orderProducts;
     }
 
-    public void setOrderProduct(List<OrderProductShowOutDTO> orderProduct) {
-        this.orderProduct = orderProduct;
+    public void setOrderProducts(List<OrderProductShowOutDTO> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }

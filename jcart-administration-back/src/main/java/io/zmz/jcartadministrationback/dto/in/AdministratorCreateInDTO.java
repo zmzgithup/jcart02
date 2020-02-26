@@ -1,13 +1,11 @@
 package io.zmz.jcartadministrationback.dto.in;
 
-public class AdministartorCreateInDTO {
-
+public class AdministratorCreateInDTO {
     private String username;
-    private String realname;
-    private String mobile;
+    private String password;
+    private String realName;
     private String email;
     private String avatarUrl;
-    private String password;
     private Byte status;
 
     public String getUsername() {
@@ -18,20 +16,20 @@ public class AdministartorCreateInDTO {
         this.username = username;
     }
 
-    public String getRealname() {
-        return realname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setRealname(String realname) {
-        this.realname = realname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getEmail() {
@@ -48,14 +46,6 @@ public class AdministartorCreateInDTO {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Byte getStatus() {

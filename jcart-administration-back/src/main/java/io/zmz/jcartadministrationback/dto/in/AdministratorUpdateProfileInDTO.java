@@ -1,45 +1,18 @@
 package io.zmz.jcartadministrationback.dto.in;
 
 public class AdministratorUpdateProfileInDTO {
-
-    private Integer administraiorId;
-    private String username;
-    private String realname;
-    private String mobile;
+    private String realName;
     private String email;
     private String avatarUrl;
     private String password;
+    private Byte status;
 
-    public Integer getAdministraiorId() {
-        return administraiorId;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setAdministraiorId(Integer administraiorId) {
-        this.administraiorId = administraiorId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getRealname() {
-        return realname;
-    }
-
-    public void setRealname(String realname) {
-        this.realname = realname;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getEmail() {
@@ -64,5 +37,13 @@ public class AdministratorUpdateProfileInDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 }

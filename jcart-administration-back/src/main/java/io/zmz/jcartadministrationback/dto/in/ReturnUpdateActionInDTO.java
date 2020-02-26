@@ -1,7 +1,7 @@
 package io.zmz.jcartadministrationback.dto.in;
 
 public class ReturnUpdateActionInDTO {
-    public Integer returnId;
+    private Integer returnId;
     private Byte action;
 
     public Integer getReturnId() {

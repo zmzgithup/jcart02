@@ -1,17 +1,9 @@
 package io.zmz.jcartadministrationback.dto.in;
 
-public class AdministartorResetPwdEmailInDTO {
-    private String newPassword;
+public class AdministratorResetPwdInDTO {
     private String email;
     private String resetCode;
-
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
+    private String newPwd;
 
     public String getEmail() {
         return email;
@@ -27,5 +19,13 @@ public class AdministartorResetPwdEmailInDTO {
 
     public void setResetCode(String resetCode) {
         this.resetCode = resetCode;
+    }
+
+    public String getNewPwd() {
+        return newPwd;
+    }
+
+    public void setNewPwd(String newPwd) {
+        this.newPwd = newPwd;
     }
 }

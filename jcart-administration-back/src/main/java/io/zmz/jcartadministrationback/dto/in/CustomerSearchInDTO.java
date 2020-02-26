@@ -1,21 +1,11 @@
-package io.zmz.jcartadministrationback.dto.out;
+package io.zmz.jcartadministrationback.dto.in;
 
-public class CustomerListOutDTO {
-    private Integer customerId;
+public class CustomerSearchInDTO {
     private String username;
     private String realName;
     private String mobile;
     private String email;
     private Byte status;
-    private Long createTimestamp;
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
 
     public String getUsername() {
         return username;
@@ -55,13 +45,5 @@ public class CustomerListOutDTO {
 
     public void setStatus(Byte status) {
         this.status = status;
-    }
-
-    public Long getCreateTimestamp() {
-        return createTimestamp;
-    }
-
-    public void setCreateTimestamp(Long createTimestamp) {
-        this.createTimestamp = createTimestamp;
     }
 }

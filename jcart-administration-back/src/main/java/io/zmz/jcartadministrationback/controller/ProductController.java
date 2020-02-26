@@ -1,9 +1,11 @@
 package io.zmz.jcartadministrationback.controller;
 
 import io.zmz.jcartadministrationback.dto.in.ProductCreateInDTO;
+import io.zmz.jcartadministrationback.dto.in.ProductSearchInDTO;
 import io.zmz.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.zmz.jcartadministrationback.dto.out.PageOutDTO;
 import io.zmz.jcartadministrationback.dto.out.ProductListOutDTO;
+import io.zmz.jcartadministrationback.dto.out.ProductShowOutDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,12 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @GetMapping("/search")
-    public PageOutDTO<ProductListOutDTO> search(@RequestParam(required = false) String productCode,
-                                                @RequestParam(required = false) String productName,
-                                                @RequestParam(required = false) Double price,
-                                                @RequestParam(required = false) Integer quantity,
-                                                @RequestParam(required = false) Byte status,
-                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum){
+    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
+                                                @RequestParam Integer pageNum){
+        return null;
+    }
+
+    @GetMapping("/getById")
+    public ProductShowOutDTO getById(@RequestParam Integer productId){
         return null;
     }
 

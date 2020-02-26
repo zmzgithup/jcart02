@@ -1,20 +1,20 @@
 package io.zmz.jcartadministrationback.dto.out;
 
 public class AdministratorGetProfileOutDTO {
-
-    private Integer administraiorId;
+    private Integer administratorId;
     private String username;
-    private String realname;
-    private String mobile;
+    private String realName;
     private String email;
     private String avatarUrl;
+    private Byte status;
+    private Long createTimestamp;
 
-    public Integer getAdministraiorId() {
-        return administraiorId;
+    public Integer getAdministratorId() {
+        return administratorId;
     }
 
-    public void setAdministraiorId(Integer administraiorId) {
-        this.administraiorId = administraiorId;
+    public void setAdministratorId(Integer administratorId) {
+        this.administratorId = administratorId;
     }
 
     public String getUsername() {
@@ -25,20 +25,12 @@ public class AdministratorGetProfileOutDTO {
         this.username = username;
     }
 
-    public String getRealname() {
-        return realname;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setRealname(String realname) {
-        this.realname = realname;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getEmail() {
@@ -55,5 +47,21 @@ public class AdministratorGetProfileOutDTO {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public Long getCreateTimestamp() {
+        return createTimestamp;
+    }
+
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 }

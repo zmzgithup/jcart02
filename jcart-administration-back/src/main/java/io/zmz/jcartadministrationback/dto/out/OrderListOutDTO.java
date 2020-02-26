@@ -5,17 +5,10 @@ public class OrderListOutDTO {
     private Integer customerId;
     private String customerName;
     private Byte status;
-    private Double totalPrice;
-    private Long createTimetamp;
-    private Long updateTimetamp;
+    private Double totalPirce;
+    private Long createTimestamp;
+    private Long updateTimestamp;
 
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
 
     public Integer getCustomerId() {
         return customerId;
@@ -33,6 +26,30 @@ public class OrderListOutDTO {
         this.customerName = customerName;
     }
 
+    public Double getTotalPirce() {
+        return totalPirce;
+    }
+
+    public void setTotalPirce(Double totalPirce) {
+        this.totalPirce = totalPirce;
+    }
+
+    public Long getCreateTimestamp() {
+        return createTimestamp;
+    }
+
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
+
+    public Long getUpdateTimestamp() {
+        return updateTimestamp;
+    }
+
+    public void setUpdateTimestamp(Long updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
+    }
+
     public Byte getStatus() {
         return status;
     }
@@ -41,27 +58,11 @@ public class OrderListOutDTO {
         this.status = status;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public Long getCreateTimetamp() {
-        return createTimetamp;
-    }
-
-    public void setCreateTimetamp(Long createTimetamp) {
-        this.createTimetamp = createTimetamp;
-    }
-
-    public Long getUpdateTimetamp() {
-        return updateTimetamp;
-    }
-
-    public void setUpdateTimetamp(Long updateTimetamp) {
-        this.updateTimetamp = updateTimetamp;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

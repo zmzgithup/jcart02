@@ -2,16 +2,17 @@ package io.zmz.jcartadministrationback.dto.in;
 
 import java.util.List;
 
+
 public class ProductUpdateInDTO {
     private Integer productId;
-    private String productCode;
     private String productName;
     private Double price;
     private Double discount;
-    private Integer quantity;
+    private Integer stockQuantity;
     private Byte status;
     private String mainPicUrl;
-    private Integer rewordPonits;
+    private Integer rewordPoints;
+    private Integer sortOrder;
     private String description;
     private List<String> otherPicUrls;
 
@@ -21,14 +22,6 @@ public class ProductUpdateInDTO {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -55,12 +48,12 @@ public class ProductUpdateInDTO {
         this.discount = discount;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getStockQuantity() {
+        return stockQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
     public Byte getStatus() {
@@ -79,12 +72,20 @@ public class ProductUpdateInDTO {
         this.mainPicUrl = mainPicUrl;
     }
 
-    public Integer getRewordPonits() {
-        return rewordPonits;
+    public Integer getRewordPoints() {
+        return rewordPoints;
     }
 
-    public void setRewordPonits(Integer rewordPonits) {
-        this.rewordPonits = rewordPonits;
+    public void setRewordPoints(Integer rewordPoints) {
+        this.rewordPoints = rewordPoints;
+    }
+
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
     public String getDescription() {

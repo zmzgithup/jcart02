@@ -1,7 +1,6 @@
 package io.zmz.jcartadministrationback.dto.out;
 
 public class OrderHistoryListOutDTO {
-
     private Long orderHistoryId;
     private Long timestamp;
     private Byte orderStatus;

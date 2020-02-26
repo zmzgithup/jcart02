@@ -1,10 +1,10 @@
 package io.zmz.jcartadministrationback.dto.out;
 
-public class AdministraiorListOutDTO {
+public class AdministratorListOutDTO {
     private Integer administratorId;
     private String username;
     private Byte status;
-    private Long createTimetamp;
+    private Long createTimestamp;
 
     public Integer getAdministratorId() {
         return administratorId;
@@ -30,11 +30,11 @@ public class AdministraiorListOutDTO {
         this.status = status;
     }
 
-    public Long getCreateTimetamp() {
-        return createTimetamp;
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setCreateTimetamp(Long createTimetamp) {
-        this.createTimetamp = createTimetamp;
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 }
