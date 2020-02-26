@@ -10,7 +10,9 @@ import io.zmz.jcartadministrationback.po.ProductDetail;
 import io.zmz.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.security.Provider;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
+    @Transactional
     public Integer create(ProductCreateInDTO productCreateInDTO) {
         Product product = new Product();
         product.setProductCode(productCreateInDTO.getProductCode());
@@ -50,6 +53,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void update(ProductUpdateInDTO productUpdateInDTO) {
         Product product = new Product();
         product.setProductId(productUpdateInDTO.getProductId());
