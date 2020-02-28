@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        productId:'',
+        productId: '',
         productCode: '',
         productName: '',
         price: '',
@@ -9,6 +9,7 @@ var app = new Vue({
         stockQuantity: '',
         rewordPoints: '',
         sortOrder: '',
+        productAbstract: '',
         description: '',
         selectedStatus: 1,
         selectedMainPic: '',
@@ -23,21 +24,27 @@ var app = new Vue({
         mainFileList: [],
         otherFileList: []
     },
-    mounted(){
-      console.log('view mounted');
+    mounted() {
+        console.log('view mounted');
 
-      var url = new URL(location.href);
-      this.productId = url.searchParams.get("productId");
-      if(!this.productId){
-        alert('productId is null');
-        return;
-      }
+        tinymce.init({
+            selector: '#mytextarea'
+        });
 
-      this.getProductById();
+
+        var url = new URL(location.href);
+        this.productId = url.searchParams.get("productId");
+        if (!this.productId) {
+            alert('productId is null');
+            return;
+        }
+
+        this.getProductById();
     },
     methods: {
         handleUpdateClick() {
             console.log('update click');
+            this.description = tinyMCE.activeEditor.getContent();
             this.UpdateProduct();
         },
         handleOnMainChange(val) {
@@ -66,19 +73,19 @@ var app = new Vue({
                     alert('上传失败');
                 });
         },
-        handleOnOtherChange(file,fileList){
-            console.log('fileList',fileList);
+        handleOnOtherChange(file, fileList) {
+            console.log('fileList', fileList);
             this.selectedOtherPics = fileList;
         },
-        handleOnOtherRemove(file,fileList){
-            console.log('fileList',fileList);
+        handleOnOtherRemove(file, fileList) {
+            console.log('fileList', fileList);
             this.selectedOtherPics = fileList;
         },
-        handleUploadOtherClick(){
+        handleUploadOtherClick() {
             console.log('upload other pic click');
             this.uploadOtherImage();
         },
-        uploadOtherImage(){
+        uploadOtherImage() {
             this.selectedOtherPics.forEach(pic => {
                 var formData = new FormData();
                 formData.append("image", pic.raw);
@@ -99,53 +106,55 @@ var app = new Vue({
                     });
             });
         },
-        createProduct(){
-            axios.post('/product/update',{
-                productId:this.productId,
-                productName:this.productName,
-                price:this.price,
-                discount:this.discount,
-                stockQuantity:this.stockQuantity,
-                status:this.selectedStatus,
-                mainPicUrl:this.mainPicUrl,
-                rewordPoints:this.rewordPoints,
-                sortOrder:this.sortOrder,
-                description:this.description,
-                otherPicUrls:this.otherPicUrls
+        UpdateProduct() {
+            axios.post('/product/update', {
+                productId: this.productId,
+                productName: this.productName,
+                price: this.price,
+                discount: this.discount,
+                stockQuantity: this.stockQuantity,
+                status: this.selectedStatus,
+                mainPicUrl: this.mainPicUrl,
+                rewordPoints: this.rewordPoints,
+                sortOrder: this.sortOrder,
+                productAbstract: this.productAbstract,
+                description: this.description,
+                otherPicUrls: this.otherPicUrls
             })
-            .then(function (response) {
-                console.log(response);
-                alert('创建成功');
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(function (response) {
+                    console.log(response);
+                    alert('更新成功');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        getProductById(){
-            axios.get('/product/getById',{
-                params:{
-                    productId:this.productId
+        getProductById() {
+            axios.get('/product/getById', {
+                params: {
+                    productId: this.productId
                 }
             })
-            .then(function(response){
-                console.log(response);
-                var product = response.data;
-                app.productId = product.productId;
-                app.productCode = product.productCode;
-                app.productName = product.productName;
-                app.price = product.price;
-                app.discount = product.discount;
-                app.stockQuantity = product.stockQuantity;
-                app.selectedStatus = product.status;
-                app.rewordPoints = product.rewordPoints;
-                app.sortOrder = product.sortOrder;
-                app.mainPicUrl = product.mainPicUrl;
-                app.description = product.description;
-                app.otherPicUrls = product.otherPicUrls;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(function (response) {
+                    console.log(response);
+                    var product = response.data;
+                    app.productId = product.productId;
+                    app.productCode = product.productCode;
+                    app.productName = product.productName;
+                    app.price = product.price;
+                    app.discount = product.discount;
+                    app.stockQuantity = product.stockQuantity;
+                    app.selectedStatus = product.status;
+                    app.rewordPoints = product.rewordPoints;
+                    app.sortOrder = product.sortOrder;
+                    app.productAbstract = product.productAbstract;
+                    app.mainPicUrl = product.mainPicUrl;
+                    app.description = product.description;
+                    app.otherPicUrls = product.otherPicUrls;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     }
 })

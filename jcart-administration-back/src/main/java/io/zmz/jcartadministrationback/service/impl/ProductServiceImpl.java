@@ -42,9 +42,10 @@ public class ProductServiceImpl implements ProductService {
         product.setMainPicUrl(productCreateInDTO.getMainPicUrl());
         product.setRewordPoints(productCreateInDTO.getRewordPoints());
         product.setSortOrder(productCreateInDTO.getSortOrder());
-        String description = productCreateInDTO.getDescription();
-        description.substring(0,Math.min(100,description.length()));
-        product.setProductAbstract(description);
+        product.setProductAbstract(productCreateInDTO.getProductAbstract());
+
+
+
         productMapper.insertSelective(product);
         Integer productId = product.getProductId();
         ProductDetail productDetail = new ProductDetail();
@@ -69,9 +70,7 @@ public class ProductServiceImpl implements ProductService {
         product.setMainPicUrl(productUpdateInDTO.getMainPicUrl());
         product.setRewordPoints(productUpdateInDTO.getRewordPoints());
         product.setSortOrder(productUpdateInDTO.getSortOrder());
-        String description = productUpdateInDTO.getDescription();
-        description.substring(0,Math.min(100,description.length()));
-        product.setProductAbstract(description);
+        product.setProductAbstract(productUpdateInDTO.getProductAbstract());
         productMapper.updateByPrimaryKeySelective(product);
 
 
