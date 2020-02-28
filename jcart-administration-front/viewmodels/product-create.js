@@ -8,8 +8,9 @@ var app = new Vue({
         stockQuantity: '',
         rewordPoints: '',
         sortOrder: '',
+        productAbstract: '',
         description: '',
-        selectedStatus: '',
+        selectedStatus: 1,
         selectedMainPic: '',
         mainPicUrl: '',
         selectedOtherPics: [],
@@ -22,9 +23,16 @@ var app = new Vue({
         mainFileList: [],
         otherFileList: []
     },
+    mounted() {
+        console.log('view mounted');
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    },
     methods: {
         handleCreateClick() {
             console.log('create click');
+            this.description = tinyMCE.activeEditor.getContent();
             this.createProduct();
         },
         handleOnMainChange(val) {
@@ -92,6 +100,7 @@ var app = new Vue({
                 productCode:this.productCode,
                 price:this.price,
                 discount:this.discount,
+                productAbstract: this.productAbstract,
                 stockQuantity:this.stockQuantity,
                 status:this.selectedStatus,
                 mainPicUrl:this.mainPicUrl,
