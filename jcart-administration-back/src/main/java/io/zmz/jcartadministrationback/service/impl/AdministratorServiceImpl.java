@@ -1,10 +1,14 @@
 package io.zmz.jcartadministrationback.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.zmz.jcartadministrationback.dao.AdministratorMapper;
 import io.zmz.jcartadministrationback.po.Administrator;
 import io.zmz.jcartadministrationback.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AdministratorServiceImpl implements AdministratorService {
@@ -25,5 +29,22 @@ public class AdministratorServiceImpl implements AdministratorService {
     @Override
     public void update(Administrator administrator) {
         administratorMapper.updateByPrimaryKeySelective(administrator);
+    }
+
+    @Override
+    public Page<Administrator> getList(Integer pageNum) {
+        PageHelper.startPage(pageNum,10);
+        Page<Administrator>  page = administratorMapper.selectList();
+        return page;
+    }
+
+    @Override
+    public void delete(Integer adminstratorId) {
+        administratorMapper.deleteByPrimaryKey(adminstratorId);
+    }
+
+    @Override
+    public void deleteBatch(List<Integer> administratorIds) {
+        administratorMapper.batchDelete(administratorIds);
     }
 }
