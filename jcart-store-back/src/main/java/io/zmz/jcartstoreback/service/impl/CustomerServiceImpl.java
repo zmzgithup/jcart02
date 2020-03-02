@@ -32,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         String password = customerRegisterInDTO.getPassword();
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        customer.setEncryptedPassword(bcryptHashString);
         customerMapper.insertSelective(customer);
         Integer customerId = customer.getCustomerId();
         return customerId;
