@@ -1,5 +1,7 @@
 package io.zmz.jcartadministrationback.dto.in;
 
+import java.util.Date;
+
 public class AdministratorCreateInDTO {
     private String username;
     private String password;
@@ -7,6 +9,15 @@ public class AdministratorCreateInDTO {
     private String email;
     private String avatarUrl;
     private Byte status;
+    private Date createTime;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public String getUsername() {
         return username;

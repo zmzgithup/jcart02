@@ -47,4 +47,9 @@ public class AdministratorServiceImpl implements AdministratorService {
     public void deleteBatch(List<Integer> administratorIds) {
         administratorMapper.batchDelete(administratorIds);
     }
+
+    @Override
+    public Integer insert(Administrator administrator) {
+        return administratorMapper.insertSelective(administrator);
+    }
 }

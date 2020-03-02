@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import io.zmz.jcartadministrationback.constant.ClientExceptionConstant;
 import io.zmz.jcartadministrationback.dto.in.*;
 import io.zmz.jcartadministrationback.dto.out.*;
+import io.zmz.jcartadministrationback.enumeration.AdministratorStatus;
 import io.zmz.jcartadministrationback.exception.ClientException;
 import io.zmz.jcartadministrationback.po.Administrator;
 import io.zmz.jcartadministrationback.service.AdministratorService;
@@ -12,6 +13,7 @@ import io.zmz.jcartadministrationback.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -120,13 +122,35 @@ public class AdministratorController {
 
     @PostMapping("/create")
     public Integer create(@RequestBody AdministratorCreateInDTO administratorCreateInDTO){
+        Administrator administrator = new Administrator();
+        administratorCreateInDTO.setUsername(administrator.getUsername());
+        administratorCreateInDTO.setRealName(administrator.getRealName());
+        administratorCreateInDTO.setEmail(administrator.getEmail());
+        administratorCreateInDTO.setAvatarUrl(administrator.getAvatarUrl());
+        administratorCreateInDTO.setStatus((byte)AdministratorStatus.Enable.ordinal());
+        administratorCreateInDTO.setCreateTime(new Date());
 
-        return null;
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, administratorCreateInDTO.getPassword().toCharArray());
+        administrator.setEncryptedPassword(bcryptHashString);
+
+        Integer administratorId  = administratorService.insert(administrator);
+        return administratorId;
     }
 
     @PostMapping("/update")
     public void update(@RequestBody AdministratorUpdateInDTO administratorUpdateInDTO){
-
+        Administrator administrator = new Administrator();
+        administratorUpdateInDTO.setAdministratorId(administrator.getAdministratorId());
+        administratorUpdateInDTO.setRealName(administrator.getRealName());
+        administratorUpdateInDTO.setEmail(administrator.getEmail());
+        administratorUpdateInDTO.setAvatarUrl(administrator.getAvatarUrl());
+        administratorUpdateInDTO.setStatus((byte)AdministratorStatus.Enable.ordinal());
+        String password = administratorUpdateInDTO.getPassword();
+        if (password != null && !password.isEmpty()){
+            String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+            administrator.setEncryptedPassword(bcryptHashString);
+        }
+        administratorService.update(administrator);
     }
 
     @PostMapping("/delete")

@@ -17,4 +17,6 @@ public interface AdministratorService {
     void delete(Integer adminstratorId);
 
     void deleteBatch(List<Integer> administratorIds);
+
+    Integer insert(Administrator administrator);
 }
