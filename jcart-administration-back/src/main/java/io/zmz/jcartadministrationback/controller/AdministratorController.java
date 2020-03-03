@@ -123,28 +123,28 @@ public class AdministratorController {
     @PostMapping("/create")
     public Integer create(@RequestBody AdministratorCreateInDTO administratorCreateInDTO){
         Administrator administrator = new Administrator();
-        administratorCreateInDTO.setUsername(administrator.getUsername());
-        administratorCreateInDTO.setRealName(administrator.getRealName());
-        administratorCreateInDTO.setEmail(administrator.getEmail());
-        administratorCreateInDTO.setAvatarUrl(administrator.getAvatarUrl());
-        administratorCreateInDTO.setStatus((byte)AdministratorStatus.Enable.ordinal());
-        administratorCreateInDTO.setCreateTime(new Date());
+        administrator.setUsername(administratorCreateInDTO.getUsername());
+        administrator.setRealName(administratorCreateInDTO.getRealName());
+        administrator.setEmail(administratorCreateInDTO.getEmail());
+        administrator.setAvatarUrl(administratorCreateInDTO.getAvatarUrl());
+        administrator.setStatus((byte) AdministratorStatus.Enable.ordinal());
+        administrator.setCreateTime(new Date());
 
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, administratorCreateInDTO.getPassword().toCharArray());
         administrator.setEncryptedPassword(bcryptHashString);
 
-        Integer administratorId  = administratorService.insert(administrator);
+        Integer administratorId = administratorService.insert(administrator);
         return administratorId;
     }
 
     @PostMapping("/update")
     public void update(@RequestBody AdministratorUpdateInDTO administratorUpdateInDTO){
         Administrator administrator = new Administrator();
-        administratorUpdateInDTO.setAdministratorId(administrator.getAdministratorId());
-        administratorUpdateInDTO.setRealName(administrator.getRealName());
-        administratorUpdateInDTO.setEmail(administrator.getEmail());
-        administratorUpdateInDTO.setAvatarUrl(administrator.getAvatarUrl());
-        administratorUpdateInDTO.setStatus((byte)AdministratorStatus.Enable.ordinal());
+        administrator.setAdministratorId(administratorUpdateInDTO.getAdministratorId());
+        administrator.setRealName(administratorUpdateInDTO.getRealName());
+        administrator.setEmail(administratorUpdateInDTO.getEmail());
+        administrator.setAvatarUrl(administratorUpdateInDTO.getAvatarUrl());
+        administrator.setStatus(administratorUpdateInDTO.getStatus());
         String password = administratorUpdateInDTO.getPassword();
         if (password != null && !password.isEmpty()){
             String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());

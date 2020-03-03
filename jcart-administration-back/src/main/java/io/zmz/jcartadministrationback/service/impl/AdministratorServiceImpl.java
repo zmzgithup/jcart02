@@ -50,6 +50,8 @@ public class AdministratorServiceImpl implements AdministratorService {
 
     @Override
     public Integer insert(Administrator administrator) {
-        return administratorMapper.insertSelective(administrator);
+        administratorMapper.insertSelective(administrator);
+        Integer administratorId = administrator.getAdministratorId();
+        return administratorId;
     }
 }
