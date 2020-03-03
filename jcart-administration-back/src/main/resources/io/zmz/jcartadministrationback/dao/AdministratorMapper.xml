@@ -33,55 +33,55 @@
       #{email,jdbcType=VARCHAR}, #{encryptedPassword,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{avatarUrl,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="io.zmz.jcartadministrationback.po.Administrator" useGeneratedKeys="true" keyProperty="administratorId">
-    insert into jcart_administrator
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        username,
-      </if>
-      <if test="realName != null">
-        real_name,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="encryptedPassword != null">
-        encrypted_password,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="avatarUrl != null">
-        avatar_url,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null">
-        #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="encryptedPassword != null">
-        #{encryptedPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="avatarUrl != null">
-        #{avatarUrl,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+    <insert id="insertSelective" parameterType="io.zmz.jcartadministrationback.po.Administrator" useGeneratedKeys="true" keyProperty="administratorId">
+        insert into jcart_administrator
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="encryptedPassword != null">
+                encrypted_password,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="avatarUrl != null">
+                avatar_url,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="encryptedPassword != null">
+                #{encryptedPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="avatarUrl != null">
+                #{avatarUrl,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
   <update id="updateByPrimaryKeySelective" parameterType="io.zmz.jcartadministrationback.po.Administrator">
     update jcart_administrator
     <set>
