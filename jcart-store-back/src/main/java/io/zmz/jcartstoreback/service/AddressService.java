@@ -12,4 +12,6 @@ public interface AddressService {
     void update(Address address);
 
     void delete(Integer addressId);
+    Address getById(Integer addressId);
+
 }
