@@ -9,7 +9,9 @@ var app = new Vue({
         description:'',
         stockQuantity:'',
         mainPicUrl:'',
-        otherPicUrls:[]
+        otherPicUrls:[],
+        quantity:1,
+        myShoppingCart:[]
     },
     computed:{
         otherPicUrlsJson(){
@@ -18,6 +20,11 @@ var app = new Vue({
     },
     mounted(){
         console.log('view mounted');
+        
+
+        var myShoppingCartJson = localStorage['myShoppingCartJson'];
+        this.myShoppingCart = myShoppingCartJson ? JSON.parse(myShoppingCartJson) : [];
+
 
         var url = new URL(location.href);
         this.productId = url.searchParams.get("productId");
@@ -30,6 +37,21 @@ var app = new Vue({
         this.getProductById();
     },
     methods:{
+        handleAddToCartClick(){
+            console.log('add to cart click');
+            var newProduct = {
+                productId:this.productId,
+                productCode: this.productCode,
+                productName: this.productName,
+                mainPicUrl: this.mainPicUrl,
+                unitPrice: this.price,
+                quantity: this.quantity
+            };
+            newProduct.totalPrice = this.price * this,quantity;
+            this.myShoppingCart.push(newProduct);
+            localStorage['myShoppingCartJson'] = JSON.stringify(this.myShoppingCart);
+            this.$message.success('添加购物车成功');
+        },
         getProductById(){
             axios.get('http://localhost:8081/product/getById',{
                 params:{
