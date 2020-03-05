@@ -1,5 +1,7 @@
 package io.zmz.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
+import io.zmz.jcartadministrationback.dto.out.OrderListOutDTO;
 import io.zmz.jcartadministrationback.po.Order;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +18,6 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    Page<OrderListOutDTO> search();
 }

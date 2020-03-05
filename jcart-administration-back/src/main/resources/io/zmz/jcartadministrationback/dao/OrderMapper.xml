@@ -114,4 +114,11 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
+
+  <select id="search" resultMap="OrderListOutDTO">
+    SELECT o.*,c.real_name FROM jcart_order as o
+    left join jcart_customer as c
+    on o.customer_id = c.customer_id
+    order by create_time desc
+  </select>
 </mapper>
