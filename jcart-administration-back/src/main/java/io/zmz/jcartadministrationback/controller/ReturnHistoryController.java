@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/returnhostory")
+@CrossOrigin
 public class ReturnHistoryController {
 
     @GetMapping("/getListByReturnId")
