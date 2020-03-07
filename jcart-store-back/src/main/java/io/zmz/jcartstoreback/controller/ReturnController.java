@@ -100,7 +100,7 @@ public class ReturnController {
         returnShowOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
         returnShowOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
 
-        List<ReturnHistory> returnHistories = returnHistoryService.getByReturnId(returnId);
+        List<ReturnHistory> returnHistories = returnHistoryService.getBy                         ReturnId(returnId);
         List<ReturnHistoryListOutDTO> returnHistoryListOutDTOS = returnHistories.stream().map(returnHistory -> {
             ReturnHistoryListOutDTO returnHistoryListOutDTO = new ReturnHistoryListOutDTO();
             returnHistoryListOutDTO.setTimestamp(returnHistory.getTime().getTime());
