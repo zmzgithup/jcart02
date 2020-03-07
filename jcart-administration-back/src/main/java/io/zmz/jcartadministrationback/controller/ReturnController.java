@@ -1,5 +1,6 @@
 package io.zmz.jcartadministrationback.controller;
 
+import com.github.pagehelper.Page;
 import io.zmz.jcartadministrationback.dto.in.ReturnSearchInDTO;
 import io.zmz.jcartadministrationback.dto.in.ReturnUpdateActionInDTO;
 import io.zmz.jcartadministrationback.dto.out.PageOutDTO;
@@ -9,6 +10,10 @@ import io.zmz.jcartadministrationback.po.Return;
 import io.zmz.jcartadministrationback.service.ReturnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/return")
@@ -20,7 +25,27 @@ public class ReturnController {
     @GetMapping("/search")
     public PageOutDTO<ReturnListOutDTO> search(ReturnSearchInDTO returnSearchInDTO,
                                                @RequestParam(required = false,defaultValue = "1") Integer pageNum){
-        return null;
+        Page<Return> page = returnService.search(pageNum);
+        List<ReturnListOutDTO> returnListOutDTOS = page.stream().map(aReturn -> {
+            ReturnListOutDTO returnListOutDTO = new ReturnListOutDTO();
+            returnListOutDTO.setReturnId(aReturn.getReturnId());
+            returnListOutDTO.setOrderId(aReturn.getOrderId());
+            returnListOutDTO.setCustomerId(aReturn.getCustomerId());
+            returnListOutDTO.setCustomerName(aReturn.getCustomerName());
+            returnListOutDTO.setProductCode(aReturn.getProductCode());
+            returnListOutDTO.setProductName(aReturn.getProductName());
+            returnListOutDTO.setStatus(aReturn.getStatus());
+            returnListOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
+            returnListOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
+            return returnListOutDTO;
+        }).collect(Collectors.toList());
+
+        PageOutDTO<ReturnListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setPageSize(page.getPages());
+        pageOutDTO.setList(returnListOutDTOS);
+        return pageOutDTO;
     }
 
     @GetMapping("/getById")
@@ -50,7 +75,12 @@ public class ReturnController {
 
     @PostMapping("/updateAction")
     public void updateAction(@RequestBody ReturnUpdateActionInDTO returnUpdateActionInDTO){
+        Return aReturn = new Return();
+        aReturn.setReturnId(returnUpdateActionInDTO.getReturnId());
+        aReturn.setAction(returnUpdateActionInDTO.getAction());
+        aReturn.setUpdateTime(new Date());
 
+        returnService.update(aReturn);
     }
 
 
