@@ -1,7 +1,10 @@
 package io.zmz.jcartstoreback.dao;
 
 import io.zmz.jcartstoreback.po.ReturnHistory;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ReturnHistoryMapper {
@@ -16,4 +19,6 @@ public interface ReturnHistoryMapper {
     int updateByPrimaryKeySelective(ReturnHistory record);
 
     int updateByPrimaryKey(ReturnHistory record);
+
+    List<ReturnHistory> selectByReturnId(@Param("returnId") Integer returnId);
 }
