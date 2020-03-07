@@ -70,7 +70,7 @@ var app = new Vue({
             });
         },
         checkoutOrder(){
-            axios.post('order/checkout',{
+            axios.post('/order/checkout',{
                 shipMethods:this.selectShipMethods,
                 shipAddressId:this.selectedShipAddressId,
                 payMethods:this.selectedPayMethod,
