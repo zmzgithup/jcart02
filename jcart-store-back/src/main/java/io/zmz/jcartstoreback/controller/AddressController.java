@@ -3,6 +3,7 @@ package io.zmz.jcartstoreback.controller;
 import io.zmz.jcartstoreback.dto.in.AddressCreateInDTO;
 import io.zmz.jcartstoreback.dto.in.AddressUpdateInDTO;
 import io.zmz.jcartstoreback.dto.out.AddressListOutDTO;
+import io.zmz.jcartstoreback.dto.out.AddressShowOutDTO;
 import io.zmz.jcartstoreback.po.Address;
 import io.zmz.jcartstoreback.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class AddressController {
     public void update(@RequestBody AddressUpdateInDTO addressUpdateInDTO,
                        @RequestAttribute Integer customerId){
         Address address = new Address();
+        address.setCustomerId(customerId);
         address.setAddressId(addressUpdateInDTO.getAddressId());
         address.setTag(addressUpdateInDTO.getTag());
         address.setReceiverName(addressUpdateInDTO.getReceiverName());
@@ -65,6 +67,19 @@ public class AddressController {
     @PostMapping("/delete")
     public void delete(@RequestBody Integer addressId){
         addressService.delete(addressId);
+    }
+
+    @GetMapping("/getById")
+    public AddressShowOutDTO getById(@RequestParam Integer addressId){
+        Address address = addressService.getById(addressId);
+        AddressShowOutDTO addressShowOutDTO = new AddressShowOutDTO();
+        addressShowOutDTO.setAddressId(address.getAddressId());
+        addressShowOutDTO.setTag(address.getTag());
+        addressShowOutDTO.setReceiverName(address.getReceiverName());
+        addressShowOutDTO.setReceiverMobile(address.getReceiverMobile());
+        addressShowOutDTO.setContent(address.getContent());
+
+        return addressShowOutDTO;
     }
 
 }

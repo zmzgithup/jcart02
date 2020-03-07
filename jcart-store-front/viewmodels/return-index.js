@@ -16,9 +16,9 @@ var app = new Vue({
             this.searchReturn();
         },
         searchReturn(){
-            axios.get('return/getList',{
+            axios.get('/return/getList',{
                 params:{
-                    pageNum:pagNum
+                    pageNum:this.pagNum
                 }
             })
             .then(function(response){

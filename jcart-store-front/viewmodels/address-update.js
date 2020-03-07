@@ -15,6 +15,8 @@ var app = new Vue({
             alert('addressId is null');
             return;
         }
+
+        this.getAddressById();
     },
     methods:{
         handleUpdateClick(){
@@ -41,7 +43,7 @@ var app = new Vue({
             })
         },
         updateAddress(){
-            axios.post('address/update',{
+            axios.post('/address/update',{
                 addressId:this.addressId,
                 tag:this.tag,
                 receiverName:this.receiverName,
