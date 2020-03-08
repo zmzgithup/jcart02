@@ -19,4 +19,6 @@ public interface AdministratorService {
     void deleteBatch(List<Integer> administratorIds);
 
     Integer insert(Administrator administrator);
+
+    Administrator getByEmail(String email);
 }

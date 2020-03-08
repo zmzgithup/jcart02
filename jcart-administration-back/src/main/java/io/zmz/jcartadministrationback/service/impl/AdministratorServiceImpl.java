@@ -54,4 +54,10 @@ public class AdministratorServiceImpl implements AdministratorService {
         Integer administratorId = administrator.getAdministratorId();
         return administratorId;
     }
+
+    @Override
+    public Administrator getByEmail(String email) {
+
+        return administratorMapper.selectByEmail(email);
+    }
 }
