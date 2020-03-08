@@ -44,7 +44,7 @@ public class ReturnHistoryController {
         returnHistory.setReturnId(returnHistoryCreateInDTO.getReturnId());
         returnHistory.setTime(new Date());
         returnHistory.setReturnStatus(returnHistoryCreateInDTO.getReturnStatus());
-        returnHistory.setComment(returnHistoryCreateInDTO.getComment();
+        returnHistory.setComment(returnHistoryCreateInDTO.getComment());
         Boolean customerNotifeid = returnHistoryCreateInDTO.getCustomerNotifeid();
         returnHistory.setCustomerNotified(customerNotifeid);
 
