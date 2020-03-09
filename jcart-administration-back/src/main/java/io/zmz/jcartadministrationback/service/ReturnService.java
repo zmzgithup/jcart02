@@ -1,6 +1,7 @@
 package io.zmz.jcartadministrationback.service;
 
 import com.github.pagehelper.Page;
+import io.zmz.jcartadministrationback.dto.in.ReturnSearchInDTO;
 import io.zmz.jcartadministrationback.po.Return;
 
 public interface ReturnService {
@@ -8,5 +9,5 @@ public interface ReturnService {
 
     void update(Return aReturn);
 
-    Page<Return> search(Integer pageNum);
+    Page<Return> search(ReturnSearchInDTO returnSearchInDTO,Integer pageNum);
 }
