@@ -143,6 +143,9 @@ public class AdministratorController {
         administrator.setEncryptedPassword(bcryptHashString);
         administratorService.update(administrator);
 
+
+        emailPwdResetCodeMap.remove(email);
+
     }
 
     @GetMapping("/getList")
