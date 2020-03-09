@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import io.zmz.jcartadministrationback.dao.CustomerMapper;
 import io.zmz.jcartadministrationback.dto.in.CustomerSetStatusInDTO;
+import io.zmz.jcartadministrationback.dto.out.CustomerShowOutDTO;
 import io.zmz.jcartadministrationback.po.Customer;
 import io.zmz.jcartadministrationback.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Page<Customer> search(Integer pageNum) {
+    public Page<Customer> search(CustomerShowOutDTO customerShowOutDTO, Integer pageNum) {
         PageHelper.startPage(pageNum,10);
 
-        return customerMapper.search();
+        return customerMapper.search(customerShowOutDTO.getUsername(),
+                                    customerShowOutDTO.getRealName(),
+                                    customerShowOutDTO.getMobile(),
+                                    customerShowOutDTO.getEmail(),
+                                    customerShowOutDTO.getStatus());
     }
 
     @Override
