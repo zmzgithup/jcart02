@@ -27,9 +27,7 @@ var app = new Vue({
     mounted() {
         console.log('view mounted');
 
-        tinymce.init({
-            selector: '#mytextarea'
-        });
+        
 
 
         var url = new URL(location.href);
@@ -150,6 +148,9 @@ var app = new Vue({
                     app.productAbstract = product.productAbstract;
                     app.mainPicUrl = product.mainPicUrl;
                     app.description = product.description;
+                    tinymce.init({
+                        selector: '#mytextarea'
+                    });
                     app.otherPicUrls = product.otherPicUrls;
                 })
                 .catch(function (error) {
