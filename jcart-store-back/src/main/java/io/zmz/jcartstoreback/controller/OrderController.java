@@ -23,7 +23,7 @@ public class OrderController {
 
     @PostMapping("/checkout")
     public Long checkout(@RequestBody OrderCheckoutInDTO orderCheckoutInDTO,
-                            @RequestAttribute Integer customerId){
+                         @RequestAttribute Integer customerId){
         Long orderId = orderService.checkout(orderCheckoutInDTO,customerId);
         return orderId;
     }

@@ -18,6 +18,7 @@ import io.zmz.jcartstoreback.service.ProductService;
 import io.zmz.jcartstoreback.vo.OrderProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -41,6 +42,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderHistoryService orderHistoryService;
 
     @Override
+    @Transactional
     public Long checkout(OrderCheckoutInDTO orderCheckoutInDTO, Integer customerId) {
 
         List<OrderProductInDTO> orderProductInDTOS = orderCheckoutInDTO.getOrderProducts();
@@ -96,6 +98,7 @@ public class OrderServiceImpl implements OrderService {
         orderDetail.setOrderProducts(JSON.toJSONString(orderProductVOS));
 
         orderDetailMapper.insertSelective(orderDetail);
+
         return orderId;
     }
 

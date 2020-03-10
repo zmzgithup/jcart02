@@ -60,7 +60,7 @@ var app = new Vue({
             this.checkoutOrder();
         },
         getMyAddress(){
-            axios.get('/address/getCustomerAddress')
+            axios.get('/address/getAddressByCustomerId')
             .then(function (response) {
                 console.log(response);
                 app.myAddresses = response.data;
@@ -71,9 +71,9 @@ var app = new Vue({
         },
         checkoutOrder(){
             axios.post('/order/checkout',{
-                shipMethods:this.selectShipMethods,
+                shipMethod:this.selectShipMethod,
                 shipAddressId:this.selectedShipAddressId,
-                payMethods:this.selectedPayMethod,
+                payMethod:this.selectedPayMethod,
                 invoiceAddressId:this.selectedInvoiceAddredssId,
                 comment:this.comment,
                 orderProducts:this.orderProducts
