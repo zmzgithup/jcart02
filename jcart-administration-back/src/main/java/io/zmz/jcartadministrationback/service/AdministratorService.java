@@ -8,7 +8,7 @@ import java.util.List;
 public interface AdministratorService {
     Administrator getByUsername(String username);
 
-    Administrator getById(Integer adminstratorId);
+    Administrator getById(Integer administratorId);
 
     void update(Administrator administrator);
 
