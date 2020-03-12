@@ -20,7 +20,6 @@ public class ImageController {
     @Value("${www.image.baseurl}")
     private String imageBaseurl;
 
-
     private List<String> imageExts= Arrays.asList("jpg","jpeg","png");
 
     @PostMapping("/upload")
@@ -43,4 +42,5 @@ public class ImageController {
         }
         return imageBaseurl + "/" + filename;
     }
+
 }
