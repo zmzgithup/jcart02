@@ -40,6 +40,7 @@ const ProductSearchRoutePage = {
             </el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
+                <router-link :to="'/product/update/'+scope.row.productId">编辑</router-link>
                     <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                 </template>
             </el-table-column>
@@ -76,8 +77,7 @@ const ProductSearchRoutePage = {
         },
         handleEdit(index, row) {
             console.log('product edit click', index, row);
-            app.jcProductId = row.productId;
-            app.selectMainPage = '1-6';
+            this.$router.push('/product/update/' + row.productId);
         },
         handleClearClick() {
             console.log('clear click');
