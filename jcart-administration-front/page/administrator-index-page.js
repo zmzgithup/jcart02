@@ -1,5 +1,5 @@
 
-Vue.component('jc--page', {
+Vue.component('jc-administrator-index-page', {
     template: `
     <div id="app">
         <el-button type="danger" @click="handleBatchDeleteClick">批量删除</el-button>

@@ -1,12 +1,9 @@
 var app = new Vue({
+    router: router,
     el: '#app',
     data: {
-        selectMainPage: ''
+        subMenus:[]
     },
     methods: {
-        // handleMenuItemClick(val){
-        //     console.log('menu item click', val.index);
-        //     this.selectMainPage = val.index;
-        // }
     }
 })
