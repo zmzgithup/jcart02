@@ -2,7 +2,7 @@ var app = new Vue({
     router: router,
     el: '#app',
     data: {
-        subMenus:[
+        subMenus: [
             {
                 name: '商品管理',
                 index: '1',
@@ -36,8 +36,16 @@ var app = new Vue({
                     { name: '用户列表', index: '4-5', route: '/administrator/index' }
                 ]
             }
+        ],
+        my: [
+            { name: "个人信息", route: "/administrator/updateprofile", divided: false },
+            { name: "关于", route: "/about", divided: false },
+            { name: "退出", route: "/administrator/logout", divided: true }
         ]
     },
     methods: {
+        handleMyItemClick(val) {
+            this.$router.replace(val);
+        }
     }
 })

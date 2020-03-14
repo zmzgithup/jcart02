@@ -11,6 +11,17 @@
 
 <body>
     <div id="app">
+        <el-header>
+            JCart电商系统
+            <el-dropdown style="float: right;" @command="handleMyItemClick">
+                <span class="el-dropdown-link">
+                    我的<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item v-for="item in my" :divided="item.divided" :command="item.route">{{item.name}}</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        </el-header>
         <el-container>
             <el-header>JCart电商系统</el-header>
             <el-container>
@@ -50,6 +61,9 @@
     <script src="route-page/return-search-route-page.js"></script>
     <script src="route-page/administrator-index-route-page.js"></script>
     <script src="route-page/product-update-route-page.js"></script>
+    <script src="route-page/administrator-update-profile-route-page.js"></script>
+
+    
     <script src="route-page/router.js"></script>
 
     <script src="viewmodels/menu-navigate.js"></script>
