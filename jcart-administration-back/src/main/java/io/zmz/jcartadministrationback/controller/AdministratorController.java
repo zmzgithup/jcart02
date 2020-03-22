@@ -7,6 +7,7 @@ import io.zmz.jcartadministrationback.dto.in.*;
 import io.zmz.jcartadministrationback.dto.out.*;
 import io.zmz.jcartadministrationback.enumeration.AdministratorStatus;
 import io.zmz.jcartadministrationback.exception.ClientException;
+import io.zmz.jcartadministrationback.mq.EmailEvent;
 import io.zmz.jcartadministrationback.po.Administrator;
 import io.zmz.jcartadministrationback.service.AdministratorService;
 import io.zmz.jcartadministrationback.util.JWTUtil;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.SecureRandom;
@@ -43,6 +45,8 @@ public class AdministratorController {
 
     private Map<String, String> emailPwdResetCodeMap = new HashMap<>();
 
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
 
     @Autowired
     private JWTUtil jwtUtil;
@@ -103,12 +107,17 @@ public class AdministratorController {
         }
         byte[] bytes = secureRandom.generateSeed(3);
         String hex = DatatypeConverter.printHexBinary(bytes);
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromEmail);
-        message.setTo(email);
-        message.setSubject("jcart管理端管理员密码重置");
-        message.setText(hex);
-        mailSender.send(message);
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom(fromEmail);
+//        message.setTo(email);
+//        message.setSubject("jcart管理端管理员密码重置");
+//        message.setText(hex);
+//        mailSender.send(message);
+        EmailEvent emailEvent = new EmailEvent();
+        emailEvent.setToEmail(email);
+        emailEvent.setTitle("jcart管理端管理员密码重置");
+        emailEvent.setContent(hex);
+        rocketMQTemplate.convertAndSend("SendPwdResetByEmail", emailEvent);
         emailPwdResetCodeMap.put(email, hex);
         return null;
     }
